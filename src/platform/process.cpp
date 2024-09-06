@@ -206,6 +206,8 @@ namespace Toolbox::Platform {
         } else {
             // Child process
             execl(program_path.c_str(), true_cmdargs.c_str(), (char *)NULL);
+            // If we get here, we probably want to know about it.
+            std::perror("Error executing dolphin process");
             // execl only returns on error
             _exit(EXIT_FAILURE);
         }
