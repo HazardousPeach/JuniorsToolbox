@@ -49,6 +49,7 @@ namespace Toolbox {
             break;
         case GL_DEBUG_SEVERITY_HIGH:
             TOOLBOX_ERROR_V("(OpenGL) {}", message);
+            TOOLBOX_TRACE(std::stacktrace::current());
             break;
         }
     }
