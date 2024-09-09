@@ -119,7 +119,7 @@ namespace Toolbox::Dolphin {
         std::memcpy(memory_name_owned + 1, memory_name.data(), memory_name.size());
         memory_name_owned[memory_name.size()] = '\0';
         int fd = shm_open(memory_name_owned, O_RDWR, 0666);
-        if (fd) {
+        if (fd == -1) {
             return make_error<Platform::MemHandle>(
                 "SHARED_MEMORY",
                 std::format("Failed to find shared process memory handle \"{}\".", memory_name));
